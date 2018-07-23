@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import axios from 'axios';
 
 export default class Form extends Component<{}> {
   constructor(props){
@@ -23,30 +24,86 @@ export default class Form extends Component<{}> {
     const {username} = this.state;
     const {email} = this.state;
     const {password} = this.state;
-    
-    
-    fetch('http://192.168.137.1:8081/api/clients', {
-      method: 'post',
+
+    //axios test
+   /*axios.post(
+        'http://192.168.10.2:8082/api/clients', 
+        {
+           'username': 'helloworld',
+           'email': 'value22@gmail.com',
+           'password': 'helllllo'
+           //other data key value pairs
+        },
+        {
+           headers: {
+               'Accept': 'application/json',
+               'Content-type':'application/json'
+                //other header fields
+           }
+        }
+    ).then((response) => response.json())
+   .then((responseJson) =>{
+      console.error(responseJson);
+   })    
+    .catch((error) => {
+      console.error(error)
+    });
+    const user = {
+      "username" : "fdfd", 
+      "email" : "fdfdf@ccccv.fgfg",
+      "password" : "fdfdfd"
+    }*/
+    /*(async () => {
+        const rawResponse = await fetch('http://192.168.10.2:8082/api/clients', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({username: 'comon', email: 'Textual@ff.com', password:'fdfdfdf'})
+        });
+        const content = await rawResponse.json();
+
+        console.log(content);
+    })();
+    */
+    fetch('http://192.168.10.2:8082/api/clients', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                password: password
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                alert(JSON.stringify(responseJson))
+            }).catch((error) => {
+                alert(error);
+        });
+    /*fetch('http://192.168.10.2:8082/api/clients', {
+      method: 'POST',
       header:{
         'Accept': 'application/json',
         'Content-type': 'application/json'
       },
       body:JSON.stringify({
-        username: 'username',
-        email: 'email',
-        password: 'password'
-        
-      })
-      
+        'username':'username',
+        'email':'ehre@gdfdfd.com',
+        'password':'mfdfdmfndfndfmndf'                             
+      })      
     })
     .then((response) => response.json())
-      .then((responseJson) =>{
-        alert(responseJson);
-      })
-      .catch((error)=>{
-        console.error(error);
+    .then((responseJson) =>{
+      console.error(responseJson);
+    })
+    .catch((error)=>{
+      console.error(error);
     });
-    
+   */ 
   }
   render() {
     return (
