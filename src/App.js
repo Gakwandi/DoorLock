@@ -33,7 +33,7 @@ export default class App extends Component {
               hideNavBar={true}
             />
             <Scene
-              key="login"
+              key="signup"
               component={Signup}
               title="Login"
               hideNavBar={true}
