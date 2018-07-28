@@ -26,5 +26,5 @@ export const Btn = props => (
 
 Btn.propTypes = {
   title: PropTypes.string,
-  onPress: PropTypes.func,
+  onPress: PropTypes.func
 };

@@ -8,6 +8,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#465a64'
   },
+  logo: {
+    width: 100,
+    height: 100
+  },
+  logoText: {
+    paddingRight: 15,
+    color: 'rgba(255,255,255,0.7)'
+  },
   scrollContainer: {
     flex: 1
   },
@@ -27,6 +35,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     margin: 20,
+    marginLeft: 40,
+    marginRight: 40,
     flex: 1
   },
   btn: {
@@ -34,10 +44,31 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.6)',
     borderRadius: 28,
     padding: 10,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   btnText: {
+    color: '#fff'
+  },
+  footerText: {
     color: '#fff',
+    flex: 1,
+    paddingTop: 15,
+    paddingBottom: 20,
+    paddingLeft: 15
+  },
+  footerTextBold: {
+    fontWeight: 'bold',
+    color: '#fff',
+    flex: 1,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingRight: 20,
+    paddingLeft: 20
+  },
+  footer: {
+    flex: 1,
+    marginTop: 100,
+    flexDirection: 'row'
   }
 });
 export default styles;
