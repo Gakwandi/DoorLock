@@ -8,6 +8,8 @@ import Login from './containers/Login';
 import Notifications from './containers/Notifications';
 import Settings from './containers/Settings';
 import store from './store/ConfigureStore';
+import { Tab } from './components';
+import styles from './styles';
 
 const RouterWithRedux = connect()(Router);
 
@@ -38,18 +40,28 @@ export default class App extends Component {
               title="Login"
               hideNavBar={true}
             />
-            <Tabs key="account">
+            <Tabs
+              key="account"
+              tabBarPosition="bottom"
+              tabStyle={styles.tabStyle}
+              tabBarStyle={styles.tabBarStyle}
+              showLabel={false}
+              activeBackgroundColor="rgba(70, 90, 100, 0.89)"
+              inactiveBackgroundColor="#465a64"
+            >
               <Scene
                 key="settings"
                 component={Settings}
                 title="Settings"
                 hideNavBar={true}
+                icon={() => <Tab icon="key" />}
               />
               <Scene
                 key="notifications"
                 component={Notifications}
                 title="Notifications"
                 hideNavBar={true}
+                icon={() => <Tab icon="bell" />}
               />
             </Tabs>
           </Modal>

@@ -7,8 +7,8 @@ import styles from '../styles';
 class Splash extends Component {
   componentDidMount() {
     setTimeout(() => {
-      Actions.login();
-    }, 10);
+      Actions.settings();
+    }, 100);
   }
 
   render() {

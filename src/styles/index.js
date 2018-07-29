@@ -69,6 +69,30 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 100,
     flexDirection: 'row'
+  },
+  tabStyle: {
+    // backgroundColor: '#465a64',
+    borderTopWidth: 2,
+    padding: 0,
+    margin: 0,
+    borderColor: 'rgba(255,255,255,0.1)'
+  },
+  tabBarStyle: {
+    borderTopWidth: 0,
+  },
+  tabIcon: {
+    padding: 0,
+    margin: 0,
+    borderColor: '#fff'
+  },
+  powerBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    height: 120,
+    width: 120,
+    padding: 0,
+    borderRadius: 60
   }
 });
 export default styles;

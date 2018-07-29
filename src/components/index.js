@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput, TouchableOpacity, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from '../styles';
 
 export const Input = props => (
@@ -23,6 +24,16 @@ export const Btn = props => (
     </TouchableOpacity>
   </View>
 );
+
+export const Tab = props => (
+  <View style={styles.tabIcon}>
+    <Icon name={props.icon} size={40} color="rgba(255,255,255,0.3)" />
+  </View>
+);
+
+Tab.propTypes = {
+  icon: PropTypes.string
+};
 
 Btn.propTypes = {
   title: PropTypes.string,
