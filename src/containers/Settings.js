@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  StatusBar
-} from 'react-native';
+import { View, ScrollView, Text, StatusBar } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { logout } from '../actions/AuthActions';
+import { FlexBtn } from '../components';
 import styles from '../styles';
 
 class Settings extends Component {
   render() {
+    const { auth } = this.props;
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="rgba(0,0,0,0.4)" translucent={true} />
         <ScrollView style={styles.scrollContainer}>
           <View style={styles.content}>
-            <Image source={require('../assets/logo.png')} style={styles.logo} />
-            <Text style={styles.logoText}>Door Lock{'\n \n\n'}</Text>
-            <TouchableOpacity
-              onPress={() => alert('OFF/ON button')}
-              style={styles.powerBtn}
-            >
-              <View>
-                <Icon name="md-power" size={80} color="#fff" />
-              </View>
-            </TouchableOpacity>
+            <View>
+              <Icon name="md-person" size={80} color="#fff" />
+            </View>
+            <Text style={{ color: '#fff' }}>{auth.user.username}</Text>
+            <Text style={{ color: '#fff' }}>
+              {auth.user.email}
+              {'\n\n'}
+            </Text>
+            <FlexBtn title="Logout" onPress={() => this.props.logout()} />
           </View>
         </ScrollView>
       </View>
@@ -35,8 +31,19 @@ class Settings extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({});
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+});
+
+Settings.propTypes = {
+  auth: PropTypes.object,
+  logout: PropTypes.func
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

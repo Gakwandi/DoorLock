@@ -6,6 +6,7 @@ import Splash from './containers/Splash';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
 import Notifications from './containers/Notifications';
+import Lock from './containers/Lock';
 import Settings from './containers/Settings';
 import store from './store/ConfigureStore';
 import { Tab } from './components';
@@ -50,9 +51,9 @@ export default class App extends Component {
               inactiveBackgroundColor="#465a64"
             >
               <Scene
-                key="settings"
-                component={Settings}
-                title="Settings"
+                key="lock"
+                component={Lock}
+                title="Lock"
                 hideNavBar={true}
                 icon={() => <Tab icon="key" />}
               />
@@ -62,6 +63,13 @@ export default class App extends Component {
                 title="Notifications"
                 hideNavBar={true}
                 icon={() => <Tab icon="bell" />}
+              />
+              <Scene
+                key="settings"
+                component={Settings}
+                title="Settings"
+                hideNavBar={true}
+                icon={() => <Tab icon="gear" />}
               />
             </Tabs>
           </Modal>
