@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { request, auth_request, login_url, logout_url } from '../api';
+import { request, auth_request, login_url, logout_url, register_url } from '../api';
 import {
   LOGIN,
   LOGIN_SUCCESS,
@@ -9,8 +9,10 @@ import {
   SET_AUTH,
   LOGOUT,
   LOGOUT_SUCCESS,
-  // UNSET_AUTH,
-  LOGOUT_FAIL
+  LOGOUT_FAIL,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  REGISTER
 } from './Constants';
 
 export const login = data => {
@@ -35,6 +37,23 @@ export const login = data => {
       })
       .catch(error => {
         dispatch({ type: LOGIN_FAIL, data: error.response.data });
+      });
+  };
+};
+
+export const register = data => {
+  return dispatch => {
+    dispatch({ type: REGISTER });
+    const { username, email, password } = data;
+    return request
+      .post(register_url, { username, email, password })
+      .then(response => {
+        dispatch({type: REGISTER_SUCCESS, data: response.data});
+        return true;
+      })
+      .catch(error => {
+        dispatch({ type: REGISTER_FAIL, data: error.response.data });
+        return false;
       });
   };
 };

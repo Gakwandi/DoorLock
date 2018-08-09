@@ -3,6 +3,7 @@ import store from '../store/ConfigureStore';
 
 export const api_url = 'http://192.168.56.1:8000';
 export const login_url = api_url + '/api/login';
+export const register_url = api_url + '/api/register';
 export const logout_url = api_url + '/api/logout';
 
 export const request = axios.create({

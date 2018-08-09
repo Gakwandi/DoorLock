@@ -5,7 +5,11 @@ import {
   DISMISS_LOGIN_MESSAGE,
   SET_AUTH,
   LOGOUT_SUCCESS,
-  UNSET_AUTH
+  UNSET_AUTH,
+  DISMISS_REG_MESSAGE,
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL
 } from '../actions/Constants';
 
 const initialState = {
@@ -17,6 +21,15 @@ const initialState = {
   access_token: '',
   user: {}
 };
+
+const regInitialState = {
+  logging: false,
+  error: false,
+  logged_in: false,
+  errors: {},
+  message: ''
+};
+
 export default function AuthReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN:
@@ -76,6 +89,47 @@ export default function AuthReducer(state = initialState, action) {
         user: ''
       };
     case DISMISS_LOGIN_MESSAGE:
+      return {
+        ...state,
+        errors: {},
+        message: ''
+      };
+    default:
+      return state;
+  }
+}
+
+export function RegReducer(state = regInitialState, action) {
+  switch (action.type) {
+    case REGISTER:
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        errors: {},
+        message: 'Registering ...',
+        user: {},
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        errors: {},
+        message: action.data.message,
+        user: action.data.user
+      };
+    case REGISTER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        logged_in: false,
+        errors: action.data.errors,
+        message: action.data.message,
+        user: {}
+      };
+    case DISMISS_REG_MESSAGE:
       return {
         ...state,
         errors: {},
