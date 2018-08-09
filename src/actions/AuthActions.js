@@ -67,7 +67,6 @@ export const checkToken = () => {
       retrieveData('user_details')
         .then(details => {
           if (details !== null) {
-            console.log(details);
             const data = JSON.parse(details);
             dispatch({ type: SET_AUTH, data: data });
             Actions.account();

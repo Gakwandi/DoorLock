@@ -14,12 +14,15 @@ export const request = axios.create({
   }
 });
 
-export const auth_request = () => axios.create({
-  baseURL: api_url,
-  timeout: 1000,
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: 'Bearer ' + store.getState().auth.access_token,
-    Accept: 'application/json'
-  }
-});
+export const auth_request = () =>
+  axios.create({
+    baseURL: api_url,
+    timeout: 1000,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + store.getState().auth.access_token,
+      Accept: 'application/json'
+    }
+  });
+export const get_state_url = lock_id => api_url + '/api/lock/' + lock_id;
+export const lock_url = api_url + '/api/lock';
